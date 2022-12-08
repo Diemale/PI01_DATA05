@@ -13,7 +13,6 @@ def read_root(nombre):
 
 @app.get("/get_max_duration")
 def get_max_duration(year: int, company: str, category: str):
-    print(category)
     if category == "TV Show":
         DF = df[(df['company'] == company) & (df['release_year'] == year)]
         dfMax = DF[DF['seasons'] == DF['seasons'].max()]
