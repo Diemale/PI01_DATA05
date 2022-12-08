@@ -31,23 +31,22 @@ Las consultas a realizar fueron:
 **1) Máxima duración según tipo de film (película/serie), por plataforma y por año:
     El request debe ser: get_max_duration(año, plataforma, [min o season])**
 
-    Para esta query se creó la función get_max_duration(year: int, company: str, category: str) que recive el año, la plataforma y la categoría(serie o película) y retorna una string informando cual es la serie con más temporadas o la película de mayor duración para la plataforma y el año pedidos.
+Para esta query se creó la función get_max_duration(year: int, company: str, category: str) que recive el año, la plataforma y la categoría(serie o película) y retorna una string informando cual es la serie con más temporadas o la película de mayor duración para la plataforma y el año pedidos.
 
 **2) Cantidad de películas y series (separado) por plataforma
     El request debe ser: get_count_plataform(plataforma)**
     
-    Esta query se realiza gracias a la función show_count_two(company: str) que recibe el nombre  de la compañia (plataforma) como parámetro y devuelve una string que señala cuantas series y cuantas películas tiene listadas la plataforma ingresada como parámetro.
+Esta query se realiza gracias a la función show_count_two(company: str) que recibe el nombre  de la compañia (plataforma) como parámetro y devuelve una string que señala cuantas series y cuantas películas tiene listadas la plataforma ingresada como parámetro.
   
 **3) Cantidad de veces que se repite un género y plataforma con mayor frecuencia del mismo.
     El request debe ser: get_listedin('genero')**
     
-    La función encargada de llevar a cabo esta query es get_genre_qt(genre: str) que recibe una string(genre) como parámetro y devuelve otra string que muestra la cantidad de títulos que pertenecen a este género en nuestro dataset y además, cual es la plataforma con mayor 
-oferta del género solicitado.
+La función encargada de llevar a cabo esta query es get_genre_qt(genre: str) que recibe una string(genre) como parámetro y devuelve otra string que muestra la cantidad de títulos que pertenecen a este género en nuestro dataset y además, cual es la plataforma con mayor oferta del género solicitado.
     
 **4) Actor que más se repite según plataforma y año. 
     El request debe ser: get_actor(plataforma, año)**
   
-    Esta query fue aborda con la función max_performer(company: str, year: int) que recibe una string (company) y un int (year) como parámetros y devuelve una string que informa cual es la persona que tiene mayor cantdiad de apariciones en la compañía y año solicitados.
+ Esta query fue aborda con la función max_performer(company: str, year: int) que recibe una string (company) y un int (year) como parámetros y devuelve una string que informa cual es la persona que tiene mayor cantdiad de apariciones en la compañía y año solicitados.
     
     
 ### **Containerización de la API**
