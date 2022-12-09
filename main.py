@@ -16,7 +16,7 @@ def get_max_duration(year: int, company: str, category: str):
     if category == "TV Show":
         DF = df[(df['company'] == company) & (df['release_year'] == year)]
         dfMax = DF[DF['seasons'] == DF['seasons'].max()]
-        return f'The TV show with the most seasons in {dfMax.iloc[0][8]} for the year {dfMax.iloc[0][4]} is\
+        return f'The TV show with the most seasons in {dfMax.iloc[0][8]} for the year {dfMax.iloc[0][4]} is \
 {dfMax.iloc[0][2]} with {dfMax.iloc[0][6]} seasons.'
 
     else:
