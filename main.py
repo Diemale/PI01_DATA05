@@ -17,11 +17,11 @@ def read_root(nombre):
 
 ## Main functions
 # These functions use type hints to restrict the data type used in the queries (i.e. year: int means the input data
-# type must be an integer. Otherwise, the user will receive an instant error message.
+# type must be an integer. Otherwise, the user will receive an instant error message).
 
 @app.get("/get_max_duration")
 def get_max_duration(year: int, company: str, category: str):
-    if category == "TV Show":                                               # if input value is "Tv Show"
+    if category == "TV Show":                                               # if the input value is "Tv Show"
         DF = df[(df['company'] == company) & (df['release_year'] == year)]  # filter by company and year
         dfMax = DF[DF['seasons'] == DF['seasons'].max()]            # create a new DF with only 'max seasons' row
         # create a return string with the data we need from the last DataFrame
@@ -39,7 +39,7 @@ def get_max_duration(year: int, company: str, category: str):
 @app.get("/get_count_plataform")
 def show_count_two(company: str):
     grouped = df.groupby(['company'])                            # Group data by 'company' column
-    grouped = grouped['show_type'].value_counts().to_frame()    # count grouped values, convert the resulting series to a DataFrame
+    grouped = grouped['show_type'].value_counts().to_frame()   # count grouped values, and convert the resulting Series to a DataFrame
     grouped = grouped.rename(columns={'show_type': 'count'})   # rename column to allow an index reset
     grouped = grouped.reset_index()                            # reset the index to work neatly
     # Get a return string showing the needed data for every possible company
@@ -57,11 +57,11 @@ def show_count_two(company: str):
 def get_genre_qt(genre: str):
     # get the sum of every single value from a column with multiple-value cells
     data = df.listed_in.str.get_dummies(sep=', ').sum()
-    data = data.to_frame()                                  # convert series to a DataFrame
+    data = data.to_frame()                                  # convert the Series to a DataFrame
     data = data.rename(columns={0: 'count'}).reset_index()  # rename column to allow an index reset
     data.rename(columns={'index': 'genre'}, inplace=True)   # same as above
 
-    dfMyGenre = data[data['genre'] == genre].reset_index(drop=True)  # filter DataFrame by input genre
+    dfMyGenre = data[data['genre'] == genre].reset_index(drop=True)  # filter DataFrame by the input genre
     myGenreCount =  dfMyGenre.at[0,'count']                         # save genre total (int)
 
     # Convert a column with multiple-value cells to a Data-Frame with one column for
@@ -73,9 +73,9 @@ def get_genre_qt(genre: str):
     verComp = pd.concat([verSeries, mySeries], axis=1)      # concatenate both Series
     verComp = verComp[verComp[genre] == 1]                   # Filter the resulting DataFrame by the input genre
     vCGroup = verComp.groupby('company')                   # Group by company
-    ff = vCGroup[genre].value_counts().to_frame()    # count grouped values, convert the resulting series to a DataFrame
+    ff = vCGroup[genre].value_counts().to_frame()    # count grouped values, convert the resulting Series to a DataFrame
     ff = ff.rename(columns={genre:'count'}).reset_index()   # reset the index to work neatly
-    ff = ff[ff['count'] == ff['count'].max()]           # filter the DataFrame to get a new one-row DF with the max-count
+    ff = ff[ff['count'] == ff['count'].max()]          # filter the DataFrame to get a new one-row DF with the max-count
 
     # Return a string with the requested data
     return f'Existen {myGenreCount} registros del genero {genre}. La plataforma con mayor oferta de este genero es \
